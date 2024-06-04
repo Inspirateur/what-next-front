@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="fonts/UbuntuMono-Regular.ttf" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="user-scalable=0"/>
+</head>
+<body>
+    <div class="vertical center">
+        <h1>What's Next</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" oninput="check_username_valid()" required/>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" oninput="check_password_valid()" required/>
+        <div class="horizontal spread">
+            <button type="button" id="login" onclick="login()" disabled>Log in</button>
+            <button type="button" id="signup" onclick="signup()" disabled>Sign up</button>    
+        </div>
+        <br>
+        <small>Save your password, we won't send it to you</small>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
