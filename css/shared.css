@@ -67,6 +67,8 @@ body {
 .spread {
     display: flex;
     justify-content: space-between;
+    gap: 0.3em;
+    padding: 0.3em;
 }
 
 h2 {
@@ -138,6 +140,10 @@ select {
     padding: 0.2em;
     width: 20rem;
     text-align-last: center;
+}
+
+option {
+    font-size: 0.5em;
 }
 
 small {

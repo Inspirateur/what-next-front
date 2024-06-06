@@ -20,6 +20,7 @@ function refresh_oeuvre() {
     document.getElementById("picture").src = curr_oeuvre.picture != "" 
         ? curr_oeuvre.picture : "placeholder.jpg";
     document.getElementById("rating").innerText = curr_oeuvre.rating;
+    document.getElementById("synopsis").innerText = curr_oeuvre.synopsis;
 }
 
 async function get_reco() {
@@ -35,13 +36,18 @@ async function get_reco() {
         window.location.href = "/login";
     }
     curr_oeuvre = await reco_response.json();
-    refresh_oeuvre();
+    refresh_oeuvre();    
+
 }
 
 async function rate_oeuvre(rating) {
-    const reco_response = await fetch(back_url+"/rate", {
+    const reco_response = await fetch(back_url+"/rate_reco", {
         method: "POST",
-        body: JSON.stringify({oeuvre_id: curr_oeuvre.id, rating: rating}),
+        body: JSON.stringify({
+            oeuvre_id: curr_oeuvre.id, 
+            rating: rating, 
+            medium: document.getElementById("media-select").value
+        }),
         headers: {
             "Content-Type": "application/json",
             "Authorization": localStorage.getItem('jwt')

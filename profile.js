@@ -62,13 +62,27 @@ function on_medium_change() {
         return;
     }
     refresh_counts(medium);
+    if (rated_oeuvres_by_medium[medium] === undefined) {
+        return;
+    }
     for(const rated_oeuvre of rated_oeuvres_by_medium[medium]) {
         document.getElementById("rated"+rated_oeuvre.user_rating).appendChild(elem_from_oeuvre(rated_oeuvre));
     }
 }
 
-function update_rating(oeuvre_id, new_rating) {
-    // TODO: query the back to update the rating and move the oeuvre in the corresponding div
+async function update_rating(oeuvre_id, new_rating) {
+    // query the back to update the rating
+    const reco_response = await fetch(back_url+"/rate", {
+        method: "POST",
+        body: JSON.stringify({oeuvre_id: oeuvre_id, rating: new_rating}),
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": localStorage.getItem('jwt')
+        }
+    });
+    if (reco_response.status == 401) {
+        window.location.href = "/login";
+    }
 }
 
 function make_rate_button(oeuvre, rating) {
@@ -83,7 +97,11 @@ function make_rate_button(oeuvre, rating) {
         button.innerText = "😕";
     }
     if (oeuvre.user_rating != rating) {
-        button.addEventListener("onclick", update_rating(oeuvre.id, rating));
+        button.addEventListener("click", async function() { 
+            await update_rating(oeuvre.id, rating);
+            oeuvre.user_rating = rating;
+            on_medium_change();
+        });
         button.className = "rate-button profile";
     } else {
         button.className = "rate-button profile selected";
@@ -98,7 +116,7 @@ function elem_from_oeuvre(oeuvre) {
     let skip_button = document.createElement("button");
     skip_button.innerText = "Skip";
     if (oeuvre.user_rating != 0) {
-        skip_button.addEventListener("onclick", update_rating(oeuvre.id, 0));
+        skip_button.addEventListener("onclick", function() { update_rating(oeuvre.id, 0) });
     } else {
         skip_button.className = "selected";
     }
