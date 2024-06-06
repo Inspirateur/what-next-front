@@ -1,10 +1,25 @@
+@font-face {
+    font-family: "Ubuntu Mono";
+    src: url(/fonts/UbuntuMono-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Noto Serif";
+    src: url(/fonts/NotoSerif-VariableFont_wdth\,wght.ttf);
+}
+
+@font-face {
+    font-family: "Chocolate Classical Sans";
+    src: url(/fonts/ChocolateClassicalSans-Regular.ttf);
+}
+
 html {
     height: 100%;
 }
 
 body {
     background-color: beige;
-    font-family: "Ubuntu Mono", monospace;
+    font-family: 'Chocolate Classical Sans', sans-serif;
     font-size: 1.8em;
     line-height: 1.7;
     height: 70%;
@@ -49,6 +64,9 @@ body {
 
 h1 {
     margin-top: 0;
+    font-family: 'Noto Serif', serif;
+    text-decoration: underline coral 1vh;
+    text-align: center;
 }
 
 h2 {
@@ -71,7 +89,7 @@ a:hover {
 
 input {
     font-size: 1em;
-    font-family: "Ubuntu Mono", monospace;
+    font-family: 'Ubuntu Mono', monospace;
     border-radius: 5px;
     padding: 0.2em;
 }
@@ -87,7 +105,7 @@ input:hover {
 
 button {
     font-size: 1em;
-    font-family: "Ubuntu Mono", monospace;
+    font-family: 'Chocolate Classical Sans', sans-serif;
     border-radius: 5px;
     padding: 0.2em;
 }
@@ -115,7 +133,7 @@ select {
     -moz-appearance: button;  
     appearance: none;
     font-size: 0.8em;
-    font-family: "Ubuntu Mono", monospace;
+    font-family: 'Chocolate Classical Sans', sans-serif;
     padding: 0.2em;
     width: 20rem;
     text-align-last: center;
@@ -124,6 +142,7 @@ select {
 small {
     font-size: 0.6em;
     color: gray;
+    font-family: 'Ubuntu Mono', monospace;
 }
 
 .selected {
