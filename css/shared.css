@@ -50,6 +50,13 @@ body {
 .center {
     margin: auto;
     vertical-align: middle;
+    width: 50%;
+}
+
+@media all and (max-width: 1024px) {
+    .center {
+        width: 80%;
+    }
 }
 
 .horizontal {
@@ -62,13 +69,6 @@ body {
     justify-content: space-between;
 }
 
-h1 {
-    margin-top: 0;
-    font-family: 'Noto Serif', serif;
-    text-decoration: underline coral 1vh;
-    text-align: center;
-}
-
 h2 {
     margin: 0;
 }
@@ -76,6 +76,7 @@ h2 {
 a {
     text-decoration: none;
     font-weight: bold;
+    color: inherit;
 }
 
 a:visited {
@@ -143,32 +144,4 @@ small {
     font-size: 0.6em;
     color: gray;
     font-family: 'Ubuntu Mono', monospace;
-}
-
-.selected {
-    background-color: coral;
-}
-
-.rated {
-    padding: 0.1em 0.2em 1em 0.2em;
-}
-
-#rated2 {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(100, 255, 150, 0.4) 10%, rgba(100, 255, 150, 0.4) 90%, rgba(255, 255, 255, 0.0) 100%);
-}
-
-#rated1 {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(200, 255, 150, 0.4) 10%, rgba(200, 255, 150, 0.4) 90%, rgba(255, 255, 255, 0.0) 100%);
-}
-
-#rated-1 {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(255, 230, 150, 0.4) 10%, rgba(255, 230, 150, 0.4) 90%, rgba(255, 255, 255, 0.0) 100%);
-}
-
-#rated-2 {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(255, 150, 100, 0.4) 10%, rgba(255, 150, 100, 0.4) 90%, rgba(255, 255, 255, 0.0) 100%);
-}
-
-#rated0 {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(150, 150, 150, 0.4) 10%, rgba(150, 150, 150, 0.4) 90%, rgba(255, 255, 255, 0.0) 100%);
 }

@@ -1,0 +1,41 @@
+.selected {
+    background-color: coral;
+}
+
+.rated {
+    padding-bottom: 1em;
+    width: 100%;
+}
+
+.rated .horizontal {
+    padding-bottom: 0.2em;
+    max-height: 5em;
+    width: 50%;
+    margin: auto;
+}
+
+@media all and (max-width: 1024px) {
+    .rated .horizontal {
+        width: 95%;
+    } 
+}
+
+#rated2 {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(100, 255, 150, 0.4) 10%, rgba(100, 255, 150, 0.4) 90%, rgba(255, 255, 255, 0.0) 100%);
+}
+
+#rated1 {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(200, 255, 150, 0.4) 10%, rgba(200, 255, 150, 0.4) 90%, rgba(255, 255, 255, 0.0) 100%);
+}
+
+#rated-1 {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(255, 230, 150, 0.4) 10%, rgba(255, 230, 150, 0.4) 90%, rgba(255, 255, 255, 0.0) 100%);
+}
+
+#rated-2 {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(255, 150, 100, 0.4) 10%, rgba(255, 150, 100, 0.4) 90%, rgba(255, 255, 255, 0.0) 100%);
+}
+
+#rated0 {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.0) 0%, rgba(150, 150, 150, 0.4) 10%, rgba(150, 150, 150, 0.4) 90%, rgba(255, 255, 255, 0.0) 100%);
+}
