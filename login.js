@@ -25,21 +25,23 @@ function check_password_valid() {
 function credentials() {
     return {
         username: document.getElementById("username").value,
-        password: document.getElementById("username").value
+        password: document.getElementById("password").value
     };
 }
 
 async function login() {
+    const creds = credentials();
     const response = await fetch(back_url+"/login", {
         method: "POST",
-        body: JSON.stringify(credentials()),
+        body: JSON.stringify(creds),
         headers: {
             "Content-Type": "application/json",
         }
     });
     if (response.ok) {
         let jwt = await response.text();
-        localStorage.setItem('jwt', jwt);
+        localStorage.setItem("username", creds.username);
+        localStorage.setItem("jwt", jwt);
         window.location.href = "/";
     }
 }
@@ -54,6 +56,7 @@ async function signup() {
     });
     if (response.ok) {
         let jwt = await response.text();
+        localStorage.setItem("username", creds.username);
         localStorage.setItem('jwt', jwt);
         window.location.href = "/";
     }

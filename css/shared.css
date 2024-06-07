@@ -155,3 +155,7 @@ small {
     color: gray;
     font-family: 'Ubuntu Mono', monospace;
 }
+
+img {
+    object-fit: cover;
+}

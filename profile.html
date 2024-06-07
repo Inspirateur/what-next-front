@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="css/shared.css">
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/profile.css">
     <meta name="viewport" content="user-scalable=0"/>
 </head>
 <body>
@@ -10,6 +10,11 @@
         <select name="media" id="media-select" onchange="on_medium_change()"></select>
         <input placeholder="Search" id="search" style="width: 60%;"/>
         <a href="/" style="margin-right: 0.2em;">☰</a>
+    </div>
+    <div class="horizontal spread">
+        <div><span id="username" style="font-weight: bold; text-decoration: underline coral 8px;"></span>'s profile</div>
+        <div id="similarity" style="display: none;">similarity:&nbsp;<span id="similarity-value" style="font-weight: bold;"></span>%</div>
+        <button style="display: none;" id="logout" onclick="logout()">Logout</button>
     </div>
     <h2 style="text-align: center;">Rated <span id="rated-count"></span> <span id="medium"></span> | Skipped <span id="skipped-count"></span></h2>
     <small style="text-align: center;"><span id="rated-total"></span> total ratings</small>

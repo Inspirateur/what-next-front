@@ -9,12 +9,12 @@
     <div class="horizontal spread">
         <select name="media" id="media-select" onchange="get_reco()"></select>
         <input placeholder="Search" id="search" style="width: 60%;"/>
-        <a href="/profile" style="margin-right: 0.2em;">웃</a>
+        <a id="profile-link" style="margin-right: 0.2em;">웃</a>
     </div>
     <div class="vertical center" id="reco" style="height: 80%; display: none">
         <h2 id="title"></h2>
         <img id="picture" width="100%" height="80%" src="placeholder.jpg"/>
-        <span style="font-weight: bold;">Score: <span id="rating"></span>%</span>
+        <span>Match score: <span id="rating" style="font-weight: bold;"></span>%</span>
         <small id="synopsis" style="line-height: 1.3em; max-height: 20%;"></small>
         <div class="horizontal spread" style="margin-bottom: 1em;">
             <button class="rate-button" onclick="rate_oeuvre(2)">🤩</button>

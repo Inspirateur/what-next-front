@@ -2,6 +2,8 @@ const back_url = "http://127.0.0.1:8000";
 let curr_oeuvre = null;
 
 window.onload = async function() {
+    // setup link to profile with stored username
+    document.getElementById("profile-link").href = "/profile.html?n="+localStorage.getItem("username");
     // get the media
     const media = await (await fetch(back_url+"/media")).json();
     let media_select = document.getElementById("media-select");
@@ -32,7 +34,7 @@ async function reco_worker(url, data) {
         body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json",
-            "Authorization": localStorage.getItem('jwt')
+            "Authorization": localStorage.getItem("jwt")
         }
     });
     document.getElementById("loading").style.display = "none";
