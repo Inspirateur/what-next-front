@@ -11,11 +11,11 @@
         <input placeholder="Search" id="search" style="width: 60%;"/>
         <a href="/profile" style="margin-right: 0.2em;">웃</a>
     </div>
-    <div class="vertical center" style="height: 80%;">
+    <div class="vertical center" id="reco" style="height: 80%; display: none">
         <h2 id="title"></h2>
         <img id="picture" width="100%" height="80%" src="placeholder.jpg"/>
         <span style="font-weight: bold;">Score: <span id="rating"></span>%</span>
-        <span id="synopsis"></span>
+        <small id="synopsis" style="line-height: 1.3em; max-height: 20%;"></small>
         <div class="horizontal spread" style="margin-bottom: 1em;">
             <button class="rate-button" onclick="rate_oeuvre(2)">🤩</button>
             <button class="rate-button" onclick="rate_oeuvre(1)">🙂</button>
@@ -23,6 +23,13 @@
             <button class="rate-button" onclick="rate_oeuvre(-2)">😕</button>
         </div>
         <button onclick="rate_oeuvre(0)">Skip</button>
+    </div>
+    <div class="center" id="loading" style="justify-content: center; display: none;">
+        <img src="loading.gif"/>
+    </div>
+    <div class="vertical center" id="error" style="justify-content: center; display: none;">
+        <h2 style="color: gray;">No recommendation :(</h2>
+        <small>Data might be missing or we've ran out of content matching your tastes</small>
     </div>
     <script src="index.js"></script>
 </body>

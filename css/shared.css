@@ -113,11 +113,6 @@ button {
     padding: 0.2em;
 }
 
-button:hover {
-    cursor: pointer;
-    border-color: coral;
-}
-
 .rate-button {
     font-size: 2em;
     border: none;
@@ -129,6 +124,15 @@ button:hover {
     .rate-button.profile {
         font-size: 1.5em;
     }
+}
+
+button:hover {
+    cursor: pointer;
+    border-color: coral;
+}
+
+.rate-button:hover {
+    background-color: coral;
 }
 
 select {

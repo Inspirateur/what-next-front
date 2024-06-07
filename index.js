@@ -23,39 +23,38 @@ function refresh_oeuvre() {
     document.getElementById("synopsis").innerText = curr_oeuvre.synopsis;
 }
 
-async function get_reco() {
-    const reco_response = await fetch(back_url+"/reco", {
+async function reco_worker(url, data) {
+    document.getElementById("error").style.display = "none";
+    document.getElementById("reco").style.display = "none";
+    document.getElementById("loading").style.display = "flex";
+    const reco_response = await fetch(url, {
         method: "POST",
-        body: JSON.stringify(document.getElementById("media-select").value),
+        body: JSON.stringify(data),
         headers: {
             "Content-Type": "application/json",
             "Authorization": localStorage.getItem('jwt')
         }
     });
+    document.getElementById("loading").style.display = "none";
     if (reco_response.status == 401) {
         window.location.href = "/login";
+    } else if (reco_response.status == 404) {
+        document.getElementById("error").style.display = "flex"
+    } else {
+        curr_oeuvre = await reco_response.json();
+        refresh_oeuvre();    
+        document.getElementById("reco").style.display = "flex"
     }
-    curr_oeuvre = await reco_response.json();
-    refresh_oeuvre();    
+}
 
+async function get_reco() {
+    await reco_worker(back_url+"/reco", document.getElementById("media-select").value);
 }
 
 async function rate_oeuvre(rating) {
-    const reco_response = await fetch(back_url+"/rate_reco", {
-        method: "POST",
-        body: JSON.stringify({
-            oeuvre_id: curr_oeuvre.id, 
-            rating: rating, 
-            medium: document.getElementById("media-select").value
-        }),
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": localStorage.getItem('jwt')
-        }
+    await reco_worker(back_url+"/rate_reco", {
+        oeuvre_id: curr_oeuvre.id, 
+        rating: rating, 
+        medium: document.getElementById("media-select").value
     });
-    if (reco_response.status == 401) {
-        window.location.href = "/login";
-    }
-    curr_oeuvre = await reco_response.json();
-    refresh_oeuvre();
 }
