@@ -55,7 +55,7 @@ body {
 
 @media all and (max-width: 1024px) {
     .center {
-        width: 80%;
+        width: 90%;
     }
 }
 
@@ -158,4 +158,8 @@ small {
 
 img {
     object-fit: cover;
+}
+
+.selected {
+    background-color: coral;
 }

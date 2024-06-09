@@ -7,8 +7,8 @@
 </head>
 <body>
     <div class="horizontal spread">
-        <select name="media" id="media-select" onchange="get_reco()"></select>
-        <input placeholder="Search" id="search" style="width: 60%;"/>
+        <select name="media" id="media-select" onchange="on_search()"></select>
+        <input placeholder="Search" id="search" style="width: 60%;" oninput="on_search()"/>
         <a id="profile-link" style="margin-right: 0.2em;">웃</a>
     </div>
     <div class="vertical center" id="reco" style="height: 80%; display: none">
@@ -25,12 +25,18 @@
         <button onclick="rate_oeuvre(0)">Skip</button>
     </div>
     <div class="center" id="loading" style="justify-content: center; display: none;">
-        <img src="loading.gif"/>
+        <img src="loading.gif" width="630px" height="637px"/>
     </div>
-    <div class="vertical center" id="error" style="justify-content: center; display: none;">
+    <div class="vertical center" id="reco-error" style="justify-content: center; display: none;">
         <h2 style="color: gray;">No recommendation :(</h2>
         <small>Data might be missing or we've ran out of content matching your tastes</small>
     </div>
-    <script src="index.js"></script>
+    <div class="vertical center" id="search-results" style="display: none;"></div>
+    <div class="vertical center" id="search-error" style="justify-content: center; display: none;">
+        <h2 style="color: gray;">No results 🔎</h2>
+        <small>Keep typing! We haven't found anything matching your query yet.</small>
+    </div>
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

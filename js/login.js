@@ -47,9 +47,10 @@ async function login() {
 }
 
 async function signup() {
+    const creds = credentials();
     const response = await fetch(back_url+"/signup", {
         method: "POST",
-        body: JSON.stringify(credentials()),
+        body: JSON.stringify(creds),
         headers: {
             "Content-Type": "application/json",
         }
