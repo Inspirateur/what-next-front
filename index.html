@@ -17,18 +17,22 @@
         <input placeholder="Search" id="search" style="width: 60%;" oninput="on_search()"/>
         <a id="profile-link" style="margin-right: 0.2em;">웃</a>
     </div>
-    <div class="vertical center" id="reco" style="height: 80%; display: none">
-        <h2 id="title"></h2>
-        <img id="picture" width="100%" height="80%" src="placeholder.jpg"/>
-        <span>Match score: <span id="rating" style="font-weight: bold;"></span>%</span>
-        <small id="synopsis" style="line-height: 1.3em; max-height: 20%;"></small>
-        <div class="horizontal spread" style="margin-bottom: 1em;">
-            <button class="rate-button" onclick="rate_oeuvre(2)">🤩</button>
-            <button class="rate-button" onclick="rate_oeuvre(1)">🙂</button>
-            <button class="rate-button" onclick="rate_oeuvre(-1)">🤷</button>
-            <button class="rate-button" onclick="rate_oeuvre(-2)">😕</button>
+    <div class="vertical center" id="reco" style="height: 100%; display: none;">
+        <div style="height: 100%;">
+            <h3 id="title" style="margin-bottom: 0.5em;"></h3>
+            <img id="picture" width="100%" height="80%" src="placeholder.jpg"/>
+            <span>Match score: <span id="rating" style="font-weight: bold;"></span>%</span><br>
+            <small id="synopsis" style="display: inline-block; line-height: 1.3em; padding-bottom: 15em;"></small>
         </div>
-        <button onclick="rate_oeuvre(0)">Skip</button>
+        <div style="position: fixed; bottom: 1em; width: inherit;">
+            <div class="horizontal spread" style="margin-bottom: 0.8em;">
+                <button class="rate-button" onclick="rate_oeuvre(2)">🤩</button>
+                <button class="rate-button" onclick="rate_oeuvre(1)">🙂</button>
+                <button class="rate-button" onclick="rate_oeuvre(-1)">🤷</button>
+                <button class="rate-button" onclick="rate_oeuvre(-2)">😕</button>
+            </div>
+            <button style="width: 100%;" onclick="rate_oeuvre(0)">Skip</button>    
+        </div>    
     </div>
     <div class="center" id="loading" style="justify-content: center; display: none;">
         <img src="loading.gif" width="630px" height="637px"/>

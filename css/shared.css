@@ -21,7 +21,7 @@ body {
     background-color: beige;
     font-family: 'Chocolate Classical Sans', sans-serif;
     font-size: 1.8em;
-    line-height: 1.7;
+    line-height: 1.7em;
     height: 70%;
     display: flex;
     flex-direction: column;
@@ -72,6 +72,10 @@ body {
 }
 
 h2 {
+    margin: 0;
+}
+
+h3 {
     margin: 0;
 }
 
