@@ -7,7 +7,13 @@
 </head>
 <body>
     <div class="horizontal spread">
-        <select name="media" id="media-select" onchange="on_search()"></select>
+        <select name="media" id="media-select" onchange="on_search()">
+            <option value="Movie">Movies</option>
+            <option value="Series">Series</option>
+            <option value="AnimationMovie">Animation Movies</option>
+            <option value="Anime">Animes</option>
+            <option value="Book">Books</option>
+        </select>
         <input placeholder="Search" id="search" style="width: 60%;" oninput="on_search()"/>
         <a id="profile-link" style="margin-right: 0.2em;">웃</a>
     </div>

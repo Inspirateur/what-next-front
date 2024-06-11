@@ -3,14 +3,6 @@ let rated_oeuvres_by_medium = [];
 let is_you = false;
 
 window.onload = async function() {
-    const media = await (await fetch(back_url+"/media")).json();
-    let media_select = document.getElementById("media-select");
-    for (const medium of media) {
-        let option = document.createElement("option");
-        option.value = medium;
-        option.innerText = medium;
-        media_select.appendChild(option);
-    }
     const username = (new URLSearchParams(document.location.search)).get("n");
     document.getElementById("username").innerText = "@"+username;
     const jwt = localStorage.getItem('jwt');

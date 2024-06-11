@@ -14,15 +14,6 @@ let last_search = 0;
 window.onload = async function() {
     // setup link to profile with stored username
     document.getElementById("profile-link").href = "/profile.html?n="+localStorage.getItem("username");
-    // get the media
-    const media = await (await fetch(back_url+"/media")).json();
-    let media_select = document.getElementById("media-select");
-    for (const medium of media) {
-        let option = document.createElement("option");
-        option.value = medium;
-        option.innerText = medium;
-        media_select.appendChild(option);
-    }
     // get a reco
     await get_reco();
 };
