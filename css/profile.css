@@ -3,15 +3,15 @@
     width: 100%;
 }
 
-.rated .horizontal {
+.rated > div {
     padding-bottom: 0.2em;
-    max-height: 6.5em;
+    max-height: 9em;
     width: 50%;
     margin: auto;
 }
 
 @media all and (max-width: 1024px) {
-    .rated .horizontal {
+    .rated > div {
         width: 95%;
     } 
 }

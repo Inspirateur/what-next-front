@@ -48,9 +48,6 @@ function make_rate_button(oeuvre, rating, on_rate, is_you) {
 function elem_from_oeuvre(oeuvre, on_rate, is_you) {
     let title = document.createElement("span");
     title.innerHTML = oeuvre.title;
-    title.style.width = "95%";
-    title.style.margin = "auto";
-
     // BOTTOM LEFT RIGHT DIV
     let pic = document.createElement("img");
     pic.src = oeuvre.picture != "" 
@@ -70,10 +67,12 @@ function elem_from_oeuvre(oeuvre, on_rate, is_you) {
     subdiv_vote.appendChild(button_no);
     let div_vote = document.createElement("div");
     div_vote.className = "vertical";
+    div_vote.style.justifyContent = "space-around";
     div_vote.appendChild(subdiv_vote);
     div_vote.appendChild(skip_button);
     let div_bottom = document.createElement("div");
     div_bottom.className = "horizontal spread";
+    div_bottom.style.overflow = "auto";
     div_bottom.appendChild(pic);
     div_bottom.appendChild(div_vote);
     let elem = document.createElement("div");
