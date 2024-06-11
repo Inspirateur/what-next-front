@@ -137,6 +137,11 @@ button:hover {
     background-color: coral;
 }
 
+button:disabled:hover {
+    cursor: default;
+    border-color: initial;
+}
+
 select {
     -webkit-appearance: button;
     -moz-appearance: button;  
