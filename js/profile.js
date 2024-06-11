@@ -3,6 +3,10 @@ let rated_oeuvres_by_medium = [];
 let is_you = false;
 
 window.onload = async function() {
+    const medium = localStorage.getItem("medium");
+    if (medium !== null) {
+        document.getElementById("media-select").value = medium;
+    }
     const username = (new URLSearchParams(document.location.search)).get("n");
     document.getElementById("username").innerText = "@"+username;
     const jwt = localStorage.getItem('jwt');
@@ -76,6 +80,7 @@ function refresh_counts(medium) {
 
 function on_medium_change() {
     const medium = document.getElementById("media-select").value;
+    localStorage.setItem("medium", medium);
     document.getElementById("rated2").innerHTML = "";
     document.getElementById("rated1").innerHTML = "";
     document.getElementById("rated-1").innerHTML = "";

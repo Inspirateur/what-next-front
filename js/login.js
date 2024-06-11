@@ -1,13 +1,29 @@
 const back_url = "http://127.0.0.1:8000";
 let username_valid = false;
 let password_valid = false;
+const Errors = {
+    InvalidCredentials: "invalid-credentials",
+    UsernameTaken: "username-taken",
+    InternalError: "internal-error"
+};
 
 window.onload = async function() {
     check_username_valid();
     check_password_valid();
 };
 
+function show_error(error) {
+    document.getElementById(error).style.display = "block";
+}
+
+function hide_errors() {
+    for(const elem of document.getElementsByClassName("error")) {
+        elem.style.display = "none";
+    }
+}
+
 function toggle_buttons(enabled) {
+    hide_errors();
     document.getElementById("login").disabled = !enabled;
     document.getElementById("signup").disabled = !enabled;
 }
@@ -38,11 +54,15 @@ async function login() {
             "Content-Type": "application/json",
         }
     });
-    if (response.ok) {
+    if (response.status == 401) {
+        show_error(Errors.InvalidCredentials);
+    } else if (response.ok) {
         let jwt = await response.text();
         localStorage.setItem("username", creds.username);
         localStorage.setItem("jwt", jwt);
         window.location.href = "/";
+    } else {
+        show_error(Errors.InternalError);
     }
 }
 
@@ -55,10 +75,14 @@ async function signup() {
             "Content-Type": "application/json",
         }
     });
-    if (response.ok) {
+    if (response.status === 409) {
+        show_error(Errors.UsernameTaken);
+    } else if (response.ok) {
         let jwt = await response.text();
         localStorage.setItem("username", creds.username);
         localStorage.setItem('jwt', jwt);
         window.location.href = "/";
+    } else {
+        show_error(Errors.InternalError);
     }
 }

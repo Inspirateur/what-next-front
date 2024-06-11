@@ -12,6 +12,11 @@ const pages = [Page.Loading, Page.Reco, Page.RecoError, Page.SearchResults, Page
 let last_search = 0;
 
 window.onload = async function() {
+    const medium = localStorage.getItem("medium");
+    if (medium !== null) {
+        console.log(medium);
+        document.getElementById("media-select").value = medium;
+    }
     // setup link to profile with stored username
     document.getElementById("profile-link").href = "/profile.html?n="+localStorage.getItem("username");
     // get a reco
@@ -82,6 +87,7 @@ async function display_search_result() {
 }
 
 async function on_search() {
+    localStorage.setItem("medium", document.getElementById("media-select").value);
     let query = document.getElementById("search").value.trim();
     if (query.length === 0) {
         searched_oeuvres = [];
