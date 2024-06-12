@@ -1,4 +1,4 @@
-const back_url = "http://86.207.209.109:8000";
+const back_url = "https://86.207.209.109:8000";
 
 async function update_rating(oeuvre_id, new_rating) {
     // query the back to update the rating
