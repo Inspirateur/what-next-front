@@ -1,4 +1,3 @@
-const back_url = "http://127.0.0.1:8000";
 let username_valid = false;
 let password_valid = false;
 const Errors = {

@@ -1,4 +1,3 @@
-const back_url = "http://127.0.0.1:8000";
 let rated_oeuvres_by_medium = [];
 let is_you = false;
 

@@ -1,3 +1,5 @@
+const back_url = "http://86.207.209.109:8000";
+
 async function update_rating(oeuvre_id, new_rating) {
     // query the back to update the rating
     const reco_response = await fetch(back_url+"/rate", {

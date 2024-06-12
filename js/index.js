@@ -1,4 +1,3 @@
-const back_url = "http://127.0.0.1:8000";
 let curr_oeuvre = null;
 let searched_oeuvres = [];
 const Page = {
