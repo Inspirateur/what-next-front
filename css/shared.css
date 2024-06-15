@@ -1,16 +1,16 @@
 @font-face {
     font-family: "Ubuntu Mono";
-    src: url(/fonts/UbuntuMono-Regular.ttf);
+    src: url(fonts/UbuntuMono.ttf);
 }
 
 @font-face {
     font-family: "Noto Serif";
-    src: url(/fonts/NotoSerif-VariableFont_wdth\,wght.ttf);
+    src: url(fonts/NotoSerif.ttf);
 }
 
 @font-face {
-    font-family: "Chocolate Classical Sans";
-    src: url(/fonts/ChocolateClassicalSans-Regular.ttf);
+    font-family: "Chocolate Sans";
+    src: url(fonts/ChocolateSans.ttf);
 }
 
 html {
@@ -19,7 +19,7 @@ html {
 
 body {
     background-color: beige;
-    font-family: 'Chocolate Classical Sans', sans-serif;
+    font-family: 'Chocolate Sans', sans-serif;
     font-size: 1.8em;
     height: 70%;
     display: flex;
@@ -110,7 +110,7 @@ input:hover {
 
 button {
     font-size: 1em;
-    font-family: 'Chocolate Classical Sans', sans-serif;
+    font-family: 'Chocolate Sans', sans-serif;
     border-radius: 5px;
     padding: 0.2em;
 }
@@ -147,7 +147,7 @@ select {
     -moz-appearance: button;  
     appearance: none;
     font-size: 0.8em;
-    font-family: 'Chocolate Classical Sans', sans-serif;
+    font-family: 'Chocolate Sans', sans-serif;
     padding: 0.2em;
     width: 20rem;
     text-align-last: center;
