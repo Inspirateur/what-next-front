@@ -1,3 +1,7 @@
+/**
+ * @typedef {import('../typedefs/oeuvre.js').Oeuvre} Oeuvre
+ */
+/** @type {Oeuvre[]} */
 let rated_oeuvres_by_medium = [];
 let is_you = false;
 
@@ -93,7 +97,17 @@ function on_medium_change() {
         return;
     }
     for(const rated_oeuvre of rated_oeuvres_by_medium[medium]) {
-        document.getElementById("rated"+rated_oeuvre.user_rating).appendChild(elem_from_oeuvre(rated_oeuvre, on_medium_change, is_you));
+        let rateable = document.createElement("x-rateable");
+        rateable.oeuvre = rated_oeuvre;
+        rateable.disabled = !is_you;
+        rateable.className = "rateable";
+        rateable.on_rate = async function(rating) {
+            await update_rating(rated_oeuvre.id, rating);
+            rated_oeuvre.user_rating = rating;
+            on_medium_change();
+        }
+        document.getElementById("rated"+rated_oeuvre.user_rating)
+            .appendChild(rateable);
     }
 }
 

@@ -1,4 +1,9 @@
+/**
+ * @typedef {import('../typedefs/oeuvre.js').Oeuvre} Oeuvre
+ */
+/** @type {Oeuvre} */
 let curr_oeuvre = null;
+/** @type {Oeuvre[]} */
 let searched_oeuvres = [];
 const Page = {
     Loading: "loading",
@@ -22,6 +27,7 @@ window.onload = async function() {
     await get_reco();
 };
 
+/** @param {string} id */
 function show_page(id) {
     for(const page_id of pages) {
         document.getElementById(page_id).style.display = page_id === id 
@@ -30,11 +36,24 @@ function show_page(id) {
 }
 
 function refresh_oeuvre() {
-    document.getElementById("title").innerText = curr_oeuvre.title;
-    document.getElementById("picture").src = curr_oeuvre.picture != "" 
-        ? curr_oeuvre.picture : "placeholder.jpg";
-    document.getElementById("rating").innerText = curr_oeuvre.rating;
-    document.getElementById("synopsis").innerText = curr_oeuvre.synopsis;
+    let reco = document.getElementById("reco");
+    reco.oeuvre = curr_oeuvre;
+    reco.on_rate = function(rating) {
+        reco_worker(function() {
+            return fetch(back_url+"/rate_reco", {
+                method: "POST",
+                body: JSON.stringify({
+                    oeuvre_id: curr_oeuvre.id, 
+                    rating: rating, 
+                    medium: document.getElementById("media-select").value
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": localStorage.getItem("jwt")
+                }
+            });
+        });
+    }
 }
 
 async function reco_worker(request) {
@@ -55,23 +74,6 @@ async function get_reco() {
     await reco_worker(function() {
         return fetch(back_url+"/reco/"+document.getElementById("media-select").value, {
             headers: {
-                "Authorization": localStorage.getItem("jwt")
-            }
-        });
-    });
-}
-
-async function rate_oeuvre(rating) {
-    await reco_worker(function() {
-        return fetch(back_url+"/rate_reco", {
-            method: "POST",
-            body: JSON.stringify({
-                oeuvre_id: curr_oeuvre.id, 
-                rating: rating, 
-                medium: document.getElementById("media-select").value
-            }),
-            headers: {
-                "Content-Type": "application/json",
                 "Authorization": localStorage.getItem("jwt")
             }
         });
