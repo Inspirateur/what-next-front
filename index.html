@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="css/shared.css">
     <link rel="stylesheet" href="css/index.css">
     <meta name="viewport" content="user-scalable=0"/>
+    <script src="components/ratediv.js"></script>
+    <script src="components/oeuvre-view.js"></script>
 </head>
 <body>
     <div class="horizontal spread" style="padding: 2.5%;">
@@ -17,22 +19,7 @@
         <input placeholder="Search" id="search" style="width: 60%;" oninput="on_search()"/>
         <a id="profile-link" style="margin-right: 0.2em;">웃</a>
     </div>
-    <div class="vertical center" id="reco" style="height: 100%; display: none;">
-        <div style="height: 100%;">
-            <h3 id="title" style="margin-bottom: 0.5em;"></h3>
-            <img id="picture" width="100%" height="80%" src="placeholder.jpg"/>
-            <span>Match score: <span id="rating" style="font-weight: bold;"></span>%</span><br>
-            <small id="synopsis" style="display: inline-block; line-height: 1.3em; padding-bottom: 15em;"></small>
-        </div>
-        <div style="position: fixed; bottom: 1em; width: inherit;">
-            <div class="horizontal spread" style="margin-bottom: 0.8em;">
-                <button class="rate-button" onclick="rate_oeuvre(2)">🤩</button>
-                <button class="rate-button" onclick="rate_oeuvre(1)">🙂</button>
-                <button class="rate-button" onclick="rate_oeuvre(-1)">🤷</button>
-                <button class="rate-button" onclick="rate_oeuvre(-2)">😕</button>
-            </div>
-            <button style="width: 100%;" onclick="rate_oeuvre(0)">Skip</button>    
-        </div>    
+    <x-reco class="vertical center" id="reco" style="height: 100%; display: none;"></x-reco>
     </div>
     <div class="center" id="loading" style="justify-content: center; display: none;">
         <img src="loading.svg" width="50%"/>
@@ -46,7 +33,7 @@
         <h2 style="color: gray;">No results 🔎</h2>
         <small>Keep typing! We haven't found anything matching your query yet.</small>
     </div>
-    <script src="js/common.js"></script>
-    <script src="js/index.js"></script>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
 </html>

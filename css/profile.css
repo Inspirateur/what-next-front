@@ -1,9 +1,11 @@
 .rated {
     padding-bottom: 1em;
+    padding-top: 1em;
     width: 100%;
 }
 
-.rated > div {
+.rateable {
+    display: block;
     padding-bottom: 0.2em;
     max-height: 9em;
     width: 50%;
@@ -11,7 +13,7 @@
 }
 
 @media all and (max-width: 1024px) {
-    .rated > div {
+    .rateable {
         width: 95%;
     } 
 }
