@@ -1,0 +1,18 @@
+.slide-out {
+    transition: 0.8s;
+    transform: translate(-100vw, 0);
+}
+
+@keyframes slide-in {
+    from {
+        left: 125%
+    }
+    to {
+        left: 25%
+    }
+}
+
+.slide-in {
+    animation-name: slide-in;
+    animation-duration: 0.8s;
+}

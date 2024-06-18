@@ -13,12 +13,15 @@ const Page = {
     SearchError: "search-error",
 }
 const pages = [Page.Loading, Page.Reco, Page.RecoError, Page.SearchResults, Page.SearchError];
+const Anim = {
+    In: "slide-in",
+    Out: "slide-out"
+};
 let last_search = 0;
 
 window.onload = async function() {
     const medium = localStorage.getItem("medium");
     if (medium !== null) {
-        console.log(medium);
         document.getElementById("media-select").value = medium;
     }
     // setup link to profile with stored username
@@ -27,19 +30,33 @@ window.onload = async function() {
     await get_reco();
 };
 
-/** @param {string} id */
-function show_page(id) {
+/** @param {string} id @param {bool} animate */
+function show_page(id, animate = false) {
     for(const page_id of pages) {
-        document.getElementById(page_id).style.display = page_id === id 
-            ? "flex" : "none"; 
+        const page = document.getElementById(page_id);
+        if (page.style.display === "flex" && !page.classList.contains(Anim.Out)) {
+            page.classList.remove(Anim.In);
+            if (animate) {
+                page.classList.add(Anim.Out);
+            } else {
+                page.style.display = "none";
+            }
+        } else if (page_id === id) {
+            page.classList.remove(Anim.Out);
+            page.style.display = "flex";
+            if (animate) {
+                page.classList.add(Anim.In);
+            }
+        }
     }
 }
 
 function refresh_oeuvre() {
-    let reco = document.getElementById("reco");
+    const reco = document.getElementById(Page.Reco);
     reco.oeuvre = curr_oeuvre;
     reco.on_rate = function(rating) {
         reco_worker(function() {
+            reco.oeuvre = {...curr_oeuvre, user_rating: rating};
             return fetch(back_url+"/rate_reco", {
                 method: "POST",
                 body: JSON.stringify({
@@ -57,7 +74,7 @@ function refresh_oeuvre() {
 }
 
 async function reco_worker(request) {
-    show_page(Page.Loading);
+    show_page(Page.Loading, true);
     const reco_response = await request();
     if (reco_response.status == 401) {
         window.location.href = "/login";

@@ -40,9 +40,7 @@ class OeuvreView extends HTMLElement {
         if (rating !== null) {
             rating.innerText = oeuvre.rating;
         }
-        if (oeuvre.user_rating !== null) {
-            this.rateDiv.selected_rating = oeuvre.user_rating;
-        }
+        this.rateDiv.selected_rating = oeuvre.user_rating;
         let synopsis = this.shadowRoot.getElementById("synopsis");
         if (synopsis !== null && oeuvre.synopsis) {
             synopsis.innerText = oeuvre.synopsis;

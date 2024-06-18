@@ -31,7 +31,6 @@ function load_oeuvres(oeuvres) {
 }
 
 async function load_auth_profile(jwt, username) {
-    console.log(username);
     const response = await fetch(back_url+"/rated/"+username, {
         headers: {
             "Authorization": jwt
@@ -47,7 +46,6 @@ async function load_auth_profile(jwt, username) {
     } else {
         document.getElementById("similarity-value").innerText = profile.similarity;
         document.getElementById("similarity").style.display = "flex";
-        console.log("similarity: ", profile.similarity);
     }
     load_oeuvres(profile.oeuvres);
 }

@@ -20,7 +20,6 @@ class RateDiv extends HTMLElement {
     set selected_rating(selected_rating) {
         for(const { rating, button } of this._rate_buttons) {
             button.classList.remove("selected");
-            console.log(selected_rating, rating);
             if (rating === selected_rating) {
                 button.classList.add("selected");
             }
@@ -42,7 +41,7 @@ class RateDiv extends HTMLElement {
     set on_rate(callback) {
         this._on_rate = callback;
         for(const {rating, button} of this._rate_buttons) {
-            button.addEventListener("click", () => callback(rating));
+            button.onclick = () => callback(rating);
         }
     }
 

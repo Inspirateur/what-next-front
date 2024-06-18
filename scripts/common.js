@@ -1,4 +1,5 @@
-const back_url = "https://whats-next.xyz:8000";
+// const back_url = "https://whats-next.xyz:8000";
+const back_url = "http://127.0.0.1:8000";
 
 /**
  * @param {number} oeuvre_id 
