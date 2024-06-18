@@ -100,7 +100,14 @@ async function get_reco() {
 async function display_search_result() {
     document.getElementById("search-results").innerHTML = "";
     for(const oeuvre of searched_oeuvres) {
-        document.getElementById("search-results").appendChild(elem_from_oeuvre(oeuvre, display_search_result, true));
+        let rateable = document.createElement("x-rateable");
+        rateable.oeuvre = oeuvre;
+        rateable.on_rate = async function(rating) {
+            await update_rating(oeuvre.id, rating);
+            oeuvre.user_rating = rating;
+            display_search_result();
+        }
+        document.getElementById("search-results").appendChild(rateable);
     }
 }
 
