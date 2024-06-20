@@ -7,7 +7,7 @@ let curr_oeuvre = null;
 let searched_oeuvres = [];
 const Page = {
     Loading: "loading",
-    Reco: "reco",
+    Reco: "reco-div",
     RecoError: "reco-error",
     SearchResults: "search-results",
     SearchError: "search-error",
@@ -52,9 +52,10 @@ function show_page(id, animate = false) {
 }
 
 function refresh_oeuvre() {
-    const reco = document.getElementById(Page.Reco);
+    const reco = document.getElementById("reco");
     reco.oeuvre = curr_oeuvre;
     reco.on_rate = function(rating) {
+        show_page(Page.Loading, true);
         reco_worker(function() {
             reco.oeuvre = {...curr_oeuvre, user_rating: rating};
             return fetch(back_url+"/rate_reco", {
@@ -74,7 +75,6 @@ function refresh_oeuvre() {
 }
 
 async function reco_worker(request) {
-    show_page(Page.Loading, true);
     const reco_response = await request();
     if (reco_response.status == 401) {
         window.location.href = "/login";
@@ -88,6 +88,7 @@ async function reco_worker(request) {
 }
 
 async function get_reco() {
+    show_page(Page.Loading);
     await reco_worker(function() {
         return fetch(back_url+"/reco/"+document.getElementById("media-select").value, {
             headers: {

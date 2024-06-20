@@ -49,12 +49,12 @@ body {
 .center {
     margin: auto;
     vertical-align: middle;
-    width: 50%;
+    width: 50vw;
 }
 
 @media all and (max-width: 1024px) {
     .center {
-        width: 95%;
+        width: 95vw;
     }
 }
 

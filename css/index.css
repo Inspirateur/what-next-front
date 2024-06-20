@@ -1,6 +1,16 @@
+@keyframes slide-out {
+    from {
+        margin-left: 0;
+    }
+    to {
+        margin-left: -200%;
+    }
+}
+
 .slide-out {
-    transition: 0.8s;
-    transform: translate(-100vw, 0);
+    animation-name: slide-out;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
 }
 
 @keyframes slide-in {
