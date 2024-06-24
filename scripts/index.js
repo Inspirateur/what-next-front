@@ -76,6 +76,7 @@ function refresh_oeuvre() {
 
 async function reco_worker(request) {
     const reco_response = await request();
+    console.log(reco_response.status);
     if (reco_response.status == 401) {
         window.location.href = "/login";
     } else if (reco_response.status == 404) {
@@ -113,6 +114,8 @@ async function display_search_result() {
 }
 
 async function on_search() {
+    let timestamp = Date.now();
+    last_search = timestamp;
     localStorage.setItem("medium", document.getElementById("media-select").value);
     let query = document.getElementById("search").value.trim();
     if (query.length === 0) {
@@ -120,8 +123,6 @@ async function on_search() {
         await get_reco();
         return;
     }
-    let timestamp = Date.now();
-    last_search = timestamp;
     if (searched_oeuvres.length === 0) {
         show_page(Page.Loading);
     }

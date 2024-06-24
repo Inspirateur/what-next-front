@@ -170,3 +170,7 @@ img {
 .selected {
     background-color: coral;
 }
+
+x-rateable {
+    padding-bottom: 1em;
+}

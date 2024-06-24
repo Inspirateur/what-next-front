@@ -6,8 +6,6 @@
 
 .rateable {
     display: block;
-    padding-bottom: 0.2em;
-    max-height: 9em;
     width: 50%;
     margin: auto;
 }
