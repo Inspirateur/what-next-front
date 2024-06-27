@@ -20,6 +20,7 @@ const Anim = {
 let last_search = 0;
 
 window.onload = async function() {
+    console.log("Are you interested in the code ? :)\nIt's open sourced at:\nhttps://github.com/Inspirateur/what-next-front\nContributions are welcomed !");
     const medium = localStorage.getItem("medium");
     if (medium !== null) {
         document.getElementById("media-select").value = medium;
@@ -76,7 +77,6 @@ function refresh_oeuvre() {
 
 async function reco_worker(request) {
     const reco_response = await request();
-    console.log(reco_response.status);
     if (reco_response.status == 401) {
         window.location.href = "/login";
     } else if (reco_response.status == 404) {

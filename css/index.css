@@ -15,10 +15,10 @@
 
 @keyframes slide-in {
     from {
-        left: 125%
+        left: 130%
     }
     to {
-        left: 25%
+        left: 30%
     }
 }
 
